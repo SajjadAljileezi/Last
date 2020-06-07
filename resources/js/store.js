@@ -26,7 +26,7 @@ export default new Vuex.Store({
     actions:{
         retrieveToken(context, credentials){
             return new Promise((resolve, reject)=>{
-                axios.post('/api/login',{
+                axios.post('/login',{
                     email:credentials.email,
                     password:credentials.password,
                 }).then(response=>{
