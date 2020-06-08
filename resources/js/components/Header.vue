@@ -1,13 +1,13 @@
 <template>
 <div v-if="loggedIn" class="container mt-5" >
-<div >
+
    <div class="custom-file mt-5">
   <input @change="onFileSelected" type="file" class="custom-file-input" id="customFile">
   <label class="custom-file-label" for="customFile">Choose file</label>
 </div>
   <button  @click="onUpload"   type="button" class="btn m-3 btn-primary">Sign in</button>
 </div>
-</div>
+
 </template>
 
 

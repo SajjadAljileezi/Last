@@ -2003,6 +2003,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2026,7 +2035,19 @@ __webpack_require__.r(__webpack_exports__);
       console.error(e);
     });
   },
-  methods: {}
+  methods: {
+    grey: function grey(image) {
+      var token = localStorage.getItem('access_token');
+      axios.defaults.baseURL = '/api';
+      axios.defaults.headers.common['Authorization'] = "Bearer " + token; // const src = _image
+
+      axios.post("/grey", {
+        src: image
+      }).then(function (response) {})["catch"](function (e) {
+        console.error(e);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -37784,34 +37805,29 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.loggedIn
     ? _c("div", { staticClass: "container mt-5" }, [
-        _c("div", [
-          _c("div", { staticClass: "custom-file mt-5" }, [
-            _c("input", {
-              staticClass: "custom-file-input",
-              attrs: { type: "file", id: "customFile" },
-              on: { change: _vm.onFileSelected }
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "custom-file-label",
-                attrs: { for: "customFile" }
-              },
-              [_vm._v("Choose file")]
-            )
-          ]),
+        _c("div", { staticClass: "custom-file mt-5" }, [
+          _c("input", {
+            staticClass: "custom-file-input",
+            attrs: { type: "file", id: "customFile" },
+            on: { change: _vm.onFileSelected }
+          }),
           _vm._v(" "),
           _c(
-            "button",
-            {
-              staticClass: "btn m-3 btn-primary",
-              attrs: { type: "button" },
-              on: { click: _vm.onUpload }
-            },
-            [_vm._v("Sign in")]
+            "label",
+            { staticClass: "custom-file-label", attrs: { for: "customFile" } },
+            [_vm._v("Choose file")]
           )
-        ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn m-3 btn-primary",
+            attrs: { type: "button" },
+            on: { click: _vm.onUpload }
+          },
+          [_vm._v("Sign in")]
+        )
       ])
     : _vm._e()
 }
@@ -37866,29 +37882,70 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.loggedIn
-    ? _c(
-        "div",
-        { staticClass: "container mt-5" },
-        _vm._l(_vm.imgs, function(img, index) {
-          return _c(
-            "div",
-            {
-              key: index,
-              staticClass: "card",
-              staticStyle: { width: "18rem" }
-            },
-            [
-              _c("img", {
-                staticClass: "card-img-top",
-                attrs: { src: img.image, alt: "Card image cap" }
-              }),
-              _vm._v(" "),
-              _vm._m(0, true)
-            ]
-          )
-        }),
-        0
-      )
+    ? _c("div", { staticClass: "container mt-5" }, [
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.imgs, function(img, index) {
+            return _c("div", { key: index, staticClass: "col" }, [
+              _c(
+                "div",
+                { staticClass: "card", staticStyle: { width: "18rem" } },
+                [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: img.image, alt: "Card image cap" }
+                  }),
+                  _vm._v(" "),
+                  _vm._m(0, true),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "btn-group",
+                      attrs: { role: "group", "aria-label": "Basic example" }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.grey(img.image)
+                            }
+                          }
+                        },
+                        [_vm._v("Grey")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button" }
+                        },
+                        [_vm._v("Middle")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button" }
+                        },
+                        [_vm._v("Right")]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          }),
+          0
+        )
+      ])
     : _vm._e()
 }
 var staticRenderFns = [
@@ -55224,8 +55281,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/sajjadaljileezi/Desktop/Last/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/sajjadaljileezi/Desktop/Last/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/sajjad/Desktop/last/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/sajjad/Desktop/last/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Images;
+use Image;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,15 @@ class ImageController extends Controller
         $imgs= Images::where('user_id', $id)->get('image');
         // $imagee = $imgs->pluck('image');
         return($imgs);
+    }
+
+    public function grey(Request $request)
+    {
+        $src= $request->src;
+        $contents = Storage::get('public/'.$src);
+        $img = Image::make($contents);
+        $img->resize(320, 240);
+        $img->save($contents);
     }
 
     public function index()
