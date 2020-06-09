@@ -26,11 +26,17 @@ class ImageController extends Controller
 
     public function grey(Request $request)
     {
+
+        $id= Auth::user()->id;
         $src= $request->src;
+        $name= substr($src, 2);
+        $filename= $src;
         $contents = Storage::get('public/'.$src);
-        $img = Image::make($contents);
-        $img->resize(320, 240);
-        $img->save($contents);
+        // $path=
+         Image::make($contents)->resize(300, 200)->save(storage_path('public'.$name ));
+
+        //  return $id;
+
     }
 
     public function index()
